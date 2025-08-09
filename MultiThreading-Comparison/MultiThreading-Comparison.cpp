@@ -10,7 +10,7 @@ using namespace std;
 //*****************************************
 //					MAIN
 //*****************************************
-const int SIZE = 4'000'000;
+const int SIZE = 40'000'000;
 int Data[SIZE];
 
 // --------------------------------------
@@ -31,19 +31,24 @@ void MultiplyRange(int startIndex, int count) {
 	}
 }
 
-// ---------------------------------------------
-// Single-threaded: Multiply complete array by 3
-// ---------------------------------------------
+// --------------------------------------
+// Single-threaded: Multiply all by 3
+// --------------------------------------
 void Method_SingleThread() {
+	// Record the starting time point using the high-resolution clock
 	chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
 
-	MultiplyRange(0, SIZE);
+	MultiplyRange(0, SIZE); // Perform the actual work
 
+	// Record the ending time point using the high-resolution clock
 	chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
+
+	// Calculate the elapsed time in milliseconds between start and end
 	chrono::milliseconds duration = chrono::duration_cast<chrono::milliseconds>(end - start);
 
 	cout << "[Single Thread] Done. Time = " << duration.count() << " ms" << endl;
 }
+
 
 // ======================================
 // Entry point

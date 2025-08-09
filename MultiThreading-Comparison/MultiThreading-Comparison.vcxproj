@@ -22,7 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{2ca7e73e-b0ee-43fc-9b24-52a6b3afe71e}</ProjectGuid>
-    <RootNamespace>ConsoleAppTemplate</RootNamespace>
+    <RootNamespace>MultiThreading-Comparison</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -125,7 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ConsoleAppTemplate.cpp" />
+    <ClCompile Include="MultiThreading-Comparison.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\ConsoleUtils\ConsoleUtils.vcxproj">

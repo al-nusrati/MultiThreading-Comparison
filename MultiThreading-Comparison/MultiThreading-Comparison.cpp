@@ -72,6 +72,11 @@ int main()
 	InitializeDataArray();
 	Method_SingleThread();
 
+
+	// Twin-threaded
+	InitializeDataArray();
+	//Method_TwinThreads();		// TODO
+
 	//---------------------------------------------
 
 #pragma region footer

@@ -103,6 +103,10 @@ int main()
 	InitializeDataArray();
 	Method_TwinThreads();		
 
+	// Quad-threaded
+	InitializeDataArray();
+	//Method_QuadThreads();		// TODO
+
 	//---------------------------------------------
 
 #pragma region footer

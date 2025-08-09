@@ -49,6 +49,27 @@ void Method_SingleThread() {
 	cout << "[Single Thread] Done. Time = " << duration.count() << " ms" << endl;
 }
 
+void Method_TwinThreads() {
+	int half = SIZE / 2;
+
+	// Get the current (starting) time point from high_resolution_clock
+	chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
+
+	//******************************
+	thread t1(MultiplyRange, 0, half);          // Start a new thread (t1) and run the MultiplyRange function on the first half of the array
+	thread t2(MultiplyRange, half, SIZE - half);// Start a new thread (t2) and run the MultiplyRange function on the second half of the array
+
+	t1.join();  // Wait for thread t1 to finish before moving on
+	t2.join();  // Wait for thread t2 to finish before moving on
+	//******************************
+
+	// Get another time point (ending time point) from high_resolution_clock
+	chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
+	// Calculate the duration
+	chrono::milliseconds duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+
+	cout << "[Twin Threads] Done. Time = " << duration.count() << " ms" << endl;
+}
 
 // ======================================
 // Entry point
@@ -80,7 +101,7 @@ int main()
 
 	// Twin-threaded
 	InitializeDataArray();
-	//Method_TwinThreads();		// TODO
+	Method_TwinThreads();		
 
 	//---------------------------------------------
 

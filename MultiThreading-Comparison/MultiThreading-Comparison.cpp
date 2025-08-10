@@ -105,9 +105,8 @@ int main()
 
 	// Quad-threaded
 	InitializeDataArray();
-	//Method_QuadThreads(); //TODO
-	// 
-	
+	//Method_QuadThreads();		// TODO  (temp comment)
+
 	//---------------------------------------------
 
 #pragma region footer

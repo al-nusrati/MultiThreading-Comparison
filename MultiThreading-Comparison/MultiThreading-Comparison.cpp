@@ -49,6 +49,9 @@ void Method_SingleThread() {
 	cout << "[Single Thread] Done. Time = " << duration.count() << " ms" << endl;
 }
 
+// --------------------------------------
+// Twin-threaded: each half of array
+// --------------------------------------
 void Method_TwinThreads() {
 	int half = SIZE / 2;
 
@@ -69,6 +72,31 @@ void Method_TwinThreads() {
 	chrono::milliseconds duration = chrono::duration_cast<chrono::milliseconds>(end - start);
 
 	cout << "[Twin Threads] Done. Time = " << duration.count() << " ms" << endl;
+}
+
+// --------------------------------------
+// Quad-threaded: each quarter of array
+// --------------------------------------
+void Method_QuadThreads() {
+	int quarter = SIZE / 4;
+
+	chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
+
+	//******************************
+	// start 4 new threads and assign them tasks
+	thread t1(MultiplyRange, 0, quarter);
+	thread t2(MultiplyRange, quarter, quarter);
+	thread t3(MultiplyRange, quarter * 2, quarter);
+	thread t4(MultiplyRange, quarter * 3, SIZE - quarter * 3); // In case SIZE not divisible by 4
+
+	// wait for all the 4 threads to finish their work
+	t1.join(); t2.join(); t3.join(); t4.join();
+	//******************************
+
+	chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
+	chrono::milliseconds duration = chrono::duration_cast<chrono::milliseconds>(end - start);
+
+	cout << "[Quad Threads] Done. Time = " << duration.count() << " ms" << endl;
 }
 
 // ======================================
@@ -105,7 +133,7 @@ int main()
 
 	// Quad-threaded
 	InitializeDataArray();
-	//Method_QuadThreads();		// TODO  (temp comment)
+	Method_QuadThreads();		
 
 	//---------------------------------------------
 

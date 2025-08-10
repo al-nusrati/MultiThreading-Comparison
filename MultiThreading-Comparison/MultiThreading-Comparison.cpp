@@ -133,7 +133,7 @@ int main()
 
 	// Quad-threaded
 	InitializeDataArray();
-	Method_QuadThreads();		
+	Method_QuadThreads();		//
 
 	//---------------------------------------------
 
